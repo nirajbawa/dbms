@@ -1,5 +1,7 @@
 -- pl/ sql full form is procedural language extension of structure query language
 
+-- http://www.rebellionrider.com/category/pl-sql/
+
 set serveroutput on;
 
 -- basic anonymous structure variable declaration and output statement

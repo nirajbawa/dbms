@@ -135,8 +135,28 @@ and that value will be the number of records fetched from a cursor at that point
 
 */
 
+-- Implicit cursor
 
--- Explicit Cursor
+declare 
+    name emp.ename%type;
+begin
+    select ename into name from emp where empno = 4455;
+    if sql%notfound then
+        dbms_output.put_line('data not found');
+    elsif sql%found then
+        dbms_output.put_line('found');
+        dbms_output.put_line('name : ' || name);
+        dbms_output.put_line('count : ' ||  sql%rowcount);
+    end if;
+end;
+/
+
+select * from emp;
+
+/
+
+
+-- Explicit cursor
 set serveroutput on;
 /
 declare 
@@ -150,6 +170,9 @@ begin
         dbms_output.put_line(name);
         exit when ck%NOTFOUND;
     end loop;
+    if ck%isopen then
+        dbms_output.put_line('true');
+    end if;
     close ck;
 end;
 /

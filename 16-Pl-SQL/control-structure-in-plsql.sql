@@ -29,6 +29,25 @@ begin
 end;
 /
 
+-- CASE statement
+accept age number prompt 'enter your age';
+
+declare 
+    age number := &number;
+begin
+
+    case age
+        when 5 then
+            dbms_output.put_line('age is 5');
+        when 10 then
+            dbms_output.put_line('age is 10');
+        when 18 then
+            dbms_output.put_line('age is 18');
+        else
+            dbms_output.put_line('invalid age');
+    end case;
+end;
+/
 -- * if then elsif 
 
 declare 
