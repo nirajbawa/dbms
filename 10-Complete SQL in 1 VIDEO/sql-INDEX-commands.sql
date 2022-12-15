@@ -8,6 +8,7 @@ Indexes are used to retrieve data from the database more quickly than otherwise.
 
 */
 
+
 use learndb;
 
 
@@ -29,9 +30,11 @@ create unique index upass on users(upassword);
 Composite Indexes
 A composite index is an index on two or more columns of a table. 
 
-Whether to create a single-column index or a composite index, take into consideration the column(s) that you may use very frequently in a query's WHERE clause as filter conditions.
+Whether to create a single-column index or a composite index, take into consideration the column(s) that you may use very frequently 
+in a query's WHERE clause as filter conditions.
 
-Should there be only one column used, a single-column index should be the choice. Should there be two or more columns that are frequently used in the WHERE clause as filters, the composite index would be the best choice.
+Should there be only one column used, a single-column index should be the choice. Should there be two or more columns
+that are frequently used in the WHERE clause as filters, the composite index would be the best choice.
 
 */
 

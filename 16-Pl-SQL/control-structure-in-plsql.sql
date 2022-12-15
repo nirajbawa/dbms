@@ -159,6 +159,8 @@ begin
 end;
 /
 
+-- practice
+
 declare
     n_num number:=&n_num;
     n_res number;
@@ -174,4 +176,61 @@ begin
     end loop;
 end;
 
+/
 
+declare 
+   --N_num number;
+begin
+    for n_num in reverse 1..10 loop
+        dbms_output.put_line(n_num);
+    end loop;
+  
+end;
+/
+
+
+declare 
+   --N_num number;
+   rnum number := 1;
+   countnum number := 1;
+begin
+    while countnum <=5 loop
+        rnum := rnum*countnum;
+        countnum:= countnum+1;
+    end loop;
+    dbms_output.put_line(rnum);
+
+end;
+/
+
+declare 
+    num1 number := &num1;
+    num2 number := &num2;
+    num3 number := &num3;
+begin
+
+    if num1>num2 then
+        if num1>num3 then
+            dbms_output.put_line(num1);
+        end if;
+    elsif num2>num3 then
+        dbms_output.put_line(num2);
+    else 
+        dbms_output.put_line(num3);
+     end if;   
+
+end;
+/
+
+
+
+begin
+
+    for i in 1..100 loop
+        if mod(i,2)=0 then
+            dbms_output.put_line(i);
+        end if;
+    end loop;
+  
+end;
+     

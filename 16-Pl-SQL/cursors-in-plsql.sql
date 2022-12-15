@@ -38,7 +38,9 @@ server every time an SQL DML statement is executed. User cannot control the beha
 of these cursors. Oracle server creates an implicitcursor in the background for any PL/SQL
 block which executes an SQL statement as long as an explicit cursor does not exist for that SQL statement.
 
-Oracle server associates a cursor with every DML statement. Each of the Update & Delete statements has cursors which are responsible to identify those set of rows that are affected by the operation. Also the implicit cursor fulfills the need of a place for an Insert statement to receive the data that is to be inserted into the database.
+Oracle server associates a cursor with every DML statement. Each of the Update & Delete statements has cursors
+which are responsible to identify those set of rows that are affected by the operation. Also the implicit cursor 
+fulfills the need of a place for an Insert statement to receive the data that is to be inserted into the database.
 
 
 2.Explicit cursor
@@ -216,6 +218,7 @@ begin
         dbms_output.put_line(name || ' ' || id);
         exit when cpd%NOTFOUND;
     end loop;
+    close cpd;
 end;
     
     
@@ -274,7 +277,8 @@ begin
     dbms_output.put_line(cbrdata.ename || ' ' || cbrdata.sal);
     close cbr;
 end;
-
+/
+set serverout on;
 /
 
 
@@ -291,7 +295,7 @@ begin
     loop
         fetch cbrf into cbrfdata;
         dbms_output.put_line(cbrfdata.ename || ' ' || cbrfdata.sal);
-        exit when cbrf%NOTFOUND;
+        exit when cbrf%rowcount=5;
     end loop;
 
 end;
@@ -331,3 +335,100 @@ select deptno, ename from dept a join emp b using(deptno) where ename = 'niraj';
 /
 
 select a.deptno, b.ename from dept a inner join emp b on a.deptno=b.deptno;
+
+
+-- practice
+
+/
+declare
+
+   
+    
+    cursor empcur is
+        select * from emp where deptno = 30;
+        
+     empdetails empcur%rowtype;
+begin
+    open empcur;
+    loop 
+        fetch empcur into empdetails;
+        dbms_output.put_line('empno = ' || empdetails.empno);
+        dbms_output.put_line('empname = ' || empdetails.ename);
+        exit when empcur%notfound;
+    end loop;
+    close empcur;
+end;
+
+
+
+/
+select * from emp;
+
+
+/
+
+declare
+
+    cursor empcur is
+    select ename, job from emp where job = 'SALESMAN' or job='CLERK';
+
+
+begin
+
+    for i in empcur loop
+        dbms_output.put_line(i.ename ||' '|| i.job);
+    end loop;
+
+end;
+
+/
+
+declare
+
+    cursor empcur is
+    select ename, job from emp where ename='niraj';
+
+
+begin
+
+    for i in empcur loop
+        dbms_output.put_line(i.ename ||' '|| i.job);
+    end loop;
+
+end;
+
+/
+declare
+
+    cursor empcur is
+    select ename, job from emp where job = 'SALESMAN' or job='CLERK';
+
+
+begin
+
+    for i in empcur loop
+        dbms_output.put_line(i.ename ||' '|| i.job);
+    end loop;
+
+end;
+/
+
+declare
+
+cursor empcur is
+select sal, empno from emp where deptno = 30; 
+
+begin
+
+for i in empcur loop
+
+dbms_output.put_line(((i.sal*15/100)+i.sal) ||' '||i.empno);
+
+update emp set sal = ((i.sal*15/100)+i.sal) where empno = i.empno;
+
+end loop;
+
+end;
+/
+
+select sysdate from dual;

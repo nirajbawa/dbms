@@ -1,3 +1,88 @@
+/*
+
+# index in sql
+
+The CREATE INDEX statement is used to create indexes in tables.
+
+Indexes are used to retrieve data from the database more quickly than otherwise. The users cannot see the indexes, they are just used to speed up searches/queries.
+
+*/
+
+
+use learndb;
+
+
+-- #create index 
+create index upass on users(upassword);
+
+select * from users where upassword = 'niraj@#&123' and uname = 'nirajbava111';
+
+-- #show index
+
+show index from users;
+
+-- UNIQUE index
+
+create unique index upass on users(upassword);
+
+/*
+
+Composite Indexes
+A composite index is an index on two or more columns of a table. 
+
+Whether to create a single-column index or a composite index, take into consideration the column(s) that you may use very frequently 
+in a query's WHERE clause as filter conditions.
+
+Should there be only one column used, a single-column index should be the choice. Should there be two or more columns
+that are frequently used in the WHERE clause as filters, the composite index would be the best choice.
+
+*/
+
+create index upass on users(upassword, uname);
+
+-- # alter index 
+-- work in oracle
+alter index upass rename to upass1; 
+alter table users rename index upass to epass; 
+
+-- #drop index 
+
+drop index upass on users;
+
+
+show tables;
+select * from users;
+select * from udescriptions;
+desc users;Skip to content
+Search or jump to…
+Pull requests
+Issues
+Codespaces
+Marketplace
+Explore
+ 
+@nirajbawa 
+nirajbawa
+/
+dbms
+Private
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+dbms/10-Complete SQL in 1 VIDEO/sql-DQL-commands.sql
+@nirajbawa
+nirajbawa second commit
+Latest commit e8f0884 last month
+ History
+ 1 contributor
+758 lines (407 sloc)  19.9 KB
+
 -- data query language
 /*
 The SELECT statement is the most commonly used command in Structured Query Language. 
@@ -251,23 +336,14 @@ select * from users where uname not like "niraj%111";
 -- # Sub Query
 
 /*
-
 A Subquery is a query within another SQL query and embedded within the WHERE clause.
-
 Important Rule:
-
 A subquery can be placed in a number of SQL clauses like WHERE clause, FROM clause, HAVING clause.
-
 You can use Subquery with SELECT, UPDATE, INSERT, DELETE statements along with the operators like =, <, >, >=, <=, IN, BETWEEN, etc.
-
 A subquery is a query within another query. The outer query is known as the main query, and the inner query is known as a subquery.
-
 Subqueries are on the right side of the comparison operator.
-
 A subquery is enclosed in parentheses.
-
 In the Subquery, ORDER BY command cannot be used. But GROUP BY command can be used to perform the same function as ORDER BY command.
-
 */
         
 
@@ -752,7 +828,6 @@ select * from users;
 select * from udescriptions;
 
 desc users;
-
 
 
 
