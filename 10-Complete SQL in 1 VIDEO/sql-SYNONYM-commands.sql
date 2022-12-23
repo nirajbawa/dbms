@@ -17,9 +17,9 @@ use learndb;
 
 -- * create public synonym (this is accessed by all user on dbms require grants)
 --             for all users     name        username  tablename
-create public synonym userdisy for user.users;
+create public synonym userdisy for schema.objname;
 
-create public synonym userdisy for users;
+create public synonym userdisy for schema.objname;
 
 -- * select data from synonym 
 
@@ -30,9 +30,9 @@ select * from userdisy;
 grant create public synonym to user;
 grant create any synonym to user;
 
-create synonym userdisy for user.users;
+create synonym userdisy for schema.objname;
 
-create synonym userdisy for users;
+create synonym userdisy for schema.objname;
 
 -- * all dml operations work with synonym 
 
