@@ -53,35 +53,7 @@ drop index upass on users;
 show tables;
 select * from users;
 select * from udescriptions;
-desc users;Skip to content
-Search or jump to…
-Pull requests
-Issues
-Codespaces
-Marketplace
-Explore
- 
-@nirajbawa 
-nirajbawa
-/
-dbms
-Private
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-dbms/10-Complete SQL in 1 VIDEO/sql-DQL-commands.sql
-@nirajbawa
-nirajbawa second commit
-Latest commit e8f0884 last month
- History
- 1 contributor
-758 lines (407 sloc)  19.9 KB
+desc users;
 
 -- data query language
 /*
